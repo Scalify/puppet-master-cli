@@ -1,0 +1,7 @@
+package: github.com/Scalify/puppet-master-cli
+import:
+- package: github.com/spf13/cobra
+- package: github.com/spf13/viper
+- package: github.com/Scalify/puppet-master-client-go
+- package: github.com/kelseyhightower/envconfig
+- package: github.com/sirupsen/logrus

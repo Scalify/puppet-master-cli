@@ -1,0 +1,27 @@
+hash: e1f582b666e8b94bba6f81e12a37b436fdd995b114d98b1fdf63acb71cac2e19
+updated: 2018-09-11T19:12:07.180401278+02:00
+imports:
+- name: github.com/inconshreveable/mousetrap
+  version: 76626ae9c91c4f2a10f34cad8ce83ea42c93bb75
+- name: github.com/kelseyhightower/envconfig
+  version: f611eb38b3875cc3bd991ca91c51d06446afa14c
+- name: github.com/Scalify/puppet-master-client-go
+  version: 7256a862537b3bde2153d6efb609a5e8f4e44dc6
+- name: github.com/sirupsen/logrus
+  version: 3e01752db0189b9157070a0e1668a620f9a85da2
+- name: github.com/spf13/cobra
+  version: 99dc123558852f67743bd0b2caf8383cb3c6d720
+- name: github.com/spf13/pflag
+  version: 298182f68c66c05229eb03ac171abe6e309ee79a
+- name: github.com/spf13/viper
+  version: 3171ef9a229903ce60a9513ec3899b63c003e91c
+- name: golang.org/x/crypto
+  version: 0e37d006457bf46f9e6692014ba72ef82c33022c
+  subpackages:
+  - ssh/terminal
+- name: golang.org/x/sys
+  version: d0be0721c37eeb5299f245a996a483160fc36940
+  subpackages:
+  - unix
+  - windows
+testImports: []
