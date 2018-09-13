@@ -12,5 +12,5 @@ FROM alpine:latest
 RUN apk --no-cache add ca-certificates
 WORKDIR /root/
 COPY --from=builder /go/src/github.com/Scalify/puppet-master-cli/bin/puppet-master-cli .
-RUN chmod +x cli
+RUN chmod +x puppet-master-cli
 ENTRYPOINT ["./puppet-master-cli"]
