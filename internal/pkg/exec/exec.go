@@ -13,14 +13,15 @@ import (
 	"github.com/sirupsen/logrus"
 )
 
+// Execute a job and print the finished one to loggers target
 func Execute(logger *logrus.Entry, client *puppetmaster.Client, baseDir, codeFile, varsFile string, moduleFiles []string, delete bool) error {
-	code, err := file.Load(logger, filepath.Join(baseDir, codeFile))
+	code, err := file.Load(filepath.Join(baseDir, codeFile))
 	if err != nil {
 		return err
 	}
 
 	vars := make(map[string]string)
-	if err := file.LoadJSON(logger, filepath.Join(baseDir, varsFile), &vars); err != nil {
+	if err = file.LoadJSON(filepath.Join(baseDir, varsFile), &vars); err != nil {
 		return err
 	}
 
@@ -68,7 +69,6 @@ func Execute(logger *logrus.Entry, client *puppetmaster.Client, baseDir, codeFil
 
 func loadModules(logger *logrus.Entry, baseDir string, moduleFiles *[]string) (map[string]string, error) {
 	modules := make(map[string]string)
-	var err error
 
 	if len(*moduleFiles) == 0 {
 		files, err := ioutil.ReadDir(filepath.Join(baseDir, "modules"))
@@ -85,9 +85,10 @@ func loadModules(logger *logrus.Entry, baseDir string, moduleFiles *[]string) (m
 		}
 	}
 
+	var err error
 	for _, m := range *moduleFiles {
 		name := strings.Replace(filepath.Base(m), filepath.Ext(m), "", -1)
-		modules[name], err = file.Load(logger, filepath.Join(baseDir, m))
+		modules[name], err = file.Load(filepath.Join(baseDir, m))
 		if err != nil {
 			return modules, err
 		}

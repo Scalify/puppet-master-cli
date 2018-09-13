@@ -8,6 +8,8 @@ import (
 	"github.com/sirupsen/logrus"
 )
 
+// Job formats a puppet master job to the target of given logger
+// nolint: errcheck, gosec
 func Job(logger *logrus.Entry, job *puppetmaster.Job) {
 	fmt.Fprint(logger.Logger.Out, "\n\nJob:\n")
 
@@ -30,6 +32,7 @@ func Job(logger *logrus.Entry, job *puppetmaster.Job) {
 	fmt.Fprint(logger.Logger.Out, "\n\n")
 }
 
+// nolint: errcheck, gosec
 func logs(logger *logrus.Entry, logs []puppetmaster.Log) {
 	w := tabwriter.NewWriter(logger.Logger.Out, 20, 10, 1, ' ', tabwriter.Debug)
 	for _, l := range logs {
@@ -38,6 +41,7 @@ func logs(logger *logrus.Entry, logs []puppetmaster.Log) {
 	w.Flush()
 }
 
+// nolint: errcheck, gosec
 func results(logger *logrus.Entry, res map[string]interface{}) {
 	w := tabwriter.NewWriter(logger.Logger.Out, 20, 10, 1, ' ', tabwriter.Debug)
 	for k, v := range res {

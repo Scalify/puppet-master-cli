@@ -15,7 +15,7 @@ import (
 type puppetMasterConfig struct {
 	Verbose  bool   `ignore:"true"`
 	Endpoint string `split_words:"true" required:"true" envconfig:"PUPPET_MASTER_ENDPOINT"`
-	ApiToken string `split_words:"true" required:"true" envconfig:"PUPPET_MASTER_API_TOKEN"`
+	APIToken string `split_words:"true" required:"true" envconfig:"PUPPET_MASTER_API_TOKEN"`
 }
 
 var (
@@ -43,7 +43,7 @@ var RootCmd = &cobra.Command{
 			logger.SetLevel(logrus.InfoLevel)
 		}
 
-		client, err = puppetmaster.NewClient(config.Endpoint, config.ApiToken)
+		client, err = puppetmaster.NewClient(config.Endpoint, config.APIToken)
 		if err != nil {
 			logger.Fatalf("failed to create puppet-master client: %v", err)
 		}
