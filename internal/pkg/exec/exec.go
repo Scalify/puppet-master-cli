@@ -3,6 +3,7 @@ package exec
 import (
 	"fmt"
 	"io/ioutil"
+	"os"
 	"path/filepath"
 	"strings"
 	"time"
@@ -73,6 +74,9 @@ func loadModules(logger *logrus.Entry, baseDir string, moduleFiles *[]string) (m
 	if len(*moduleFiles) == 0 {
 		files, err := ioutil.ReadDir(filepath.Join(baseDir, "modules"))
 		if err != nil {
+			if os.IsNotExist(err) {
+				err = nil
+			}
 			return modules, err
 		}
 

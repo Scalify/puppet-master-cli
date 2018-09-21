@@ -4,6 +4,7 @@
 package cmd
 
 import (
+	"os"
 	"path"
 
 	"github.com/Scalify/puppet-master-cli/internal/pkg/exec"
@@ -17,10 +18,15 @@ var execCmd = &cobra.Command{
 	Run: func(cmd *cobra.Command, args []string) {
 		log := logger.WithField("cmd", "exec")
 
+		var baseDir string
+		var err error
 		if len(args) < 1 {
-			log.Fatalf("base directory not specified.")
+			if baseDir, err = os.Getwd(); err != nil {
+				panic(err)
+			}
+		} else {
+			baseDir = args[0]
 		}
-		baseDir := args[0]
 
 		del, err := cmd.Flags().GetBool("delete")
 		if err != nil {
