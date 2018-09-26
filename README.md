@@ -14,13 +14,6 @@ docker run --rm -it scalify/puppet-master-cli --help
 which prints something like the following:
 ```
 $ docker run --rm -it scalify/puppet-master-cli --help
-Unable to find image 'scalify/puppet-master-cli:latest' locally
-latest: Pulling from scalify/puppet-master-cli
-4fe2ade4980c: Pull complete
-b2340255bddd: Pull complete
-4fb5a75d3b92: Pull complete
-Digest: sha256:537f603d389f4a8b9a870c7fa08b06b4fa6c69837a8cac574e08982d6ada404b
-Status: Downloaded newer image for scalify/puppet-master-cli:latest
 A simple and smart CLI for the puppet-master api.
 
 Usage:
@@ -43,26 +36,20 @@ Use "puppet-master-cli [command] --help" for more information about a command.
 Right now only the `exec` command is available, which takes a directory of code, modules and vars and executes it
 against the puppet-master, specified through environment variables (endpoint, apiToken). Example:
 
-**Assuming you are running from the root of this directory, using the `test` directory, and are running the self hosted example from [here](https://github.com/Scalify/puppet-master/tree/master/examples/self_hosted)!** 
+**Assuming you are running from the root of this directory, using the `example` directory, and are running the self hosted example from [here](https://github.com/Scalify/puppet-master/tree/master/examples/self_hosted)!** 
 ```bash
 docker run \
-    -v "$(pwd)/test:/test" \
+    -v "$(pwd)/example:/example" \
     --network puppet_master \
     -e "PUPPET_MASTER_ENDPOINT=http://gateway" \
     -e "PUPPET_MASTER_API_TOKEN=puppet" \
-    --rm -it scalify/puppet-master-cli exec /test
+    --rm -it scalify/puppet-master-cli exec /example
 ```
 
-should print something like this:
+Running this in a shell should print something like this:
 
 ```
-$ docker run \
->     -v "$(pwd)/test:/test" \
->     --network puppet_master \
->     -e "PUPPET_MASTER_ENDPOINT=http://gateway" \
->     -e "PUPPET_MASTER_API_TOKEN=puppet" \
->     --rm -it scalify/puppet-master-cli exec /test
-INFO[0000] Executing jobs from directory /test           cmd=exec
+INFO[0000] Executing jobs from directory /example           cmd=exec
 INFO[0000] Loaded code file code.mjs, vars file vars.json, module files [modules/shared.mjs]  cmd=exec
 INFO[0000] Created job with id 4830a025-4bbb-4072-b74f-eb9d61d867ea  cmd=exec
 INFO[0000] Job has status created                        cmd=exec
