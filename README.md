@@ -36,7 +36,7 @@ Use "puppet-master-cli [command] --help" for more information about a command.
 Right now only the `exec` command is available, which takes a directory of code, modules and vars and executes it
 against the puppet-master, specified through environment variables (endpoint, apiToken). Example:
 
-**Assuming you are running from the root of this directory, using the `example` directory, and are running the self hosted example from [here](https://github.com/Scalify/puppet-master/tree/master/examples/self_hosted)!** 
+**Assuming you are running from the root of this directory, using the `example` directory, and are running the self hosted example from [the official repo](https://github.com/Scalify/puppet-master/tree/master/examples/self_hosted)!** 
 ```bash
 docker run \
     -v "$(pwd)/example:/example" \
