@@ -34,7 +34,7 @@ var RootCmd = &cobra.Command{
 		var err error
 
 		if config.Verbose, err = cmd.Flags().GetBool("verbose"); err != nil {
-			logger.Fatalf("failed to get verbose flag: %v", )
+			logger.Fatalf("failed to get verbose flag: %v")
 		}
 
 		if config.Verbose {
