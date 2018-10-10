@@ -10,7 +10,7 @@ import (
 
 // Job formats a puppet master job to the target of given logger
 // nolint: errcheck, gosec
-func Job(logger *logrus.Entry, job *puppetmaster.Job) {
+func Job(logger *logrus.Entry, job *puppetmaster.Job, execLogsVerbose bool) {
 	fmt.Fprint(logger.Logger.Out, "\n\nJob:\n")
 
 	w := tabwriter.NewWriter(logger.Logger.Out, 20, 10, 1, ' ', tabwriter.Debug)
@@ -24,7 +24,7 @@ func Job(logger *logrus.Entry, job *puppetmaster.Job) {
 	w.Flush()
 
 	fmt.Fprint(logger.Logger.Out, "\n\nLogs:\n")
-	logs(logger, job.Logs)
+	logs(logger, job.Logs, execLogsVerbose)
 
 	fmt.Fprint(logger.Logger.Out, "\n\nResults:\n")
 	results(logger, job.Results)
@@ -33,9 +33,13 @@ func Job(logger *logrus.Entry, job *puppetmaster.Job) {
 }
 
 // nolint: errcheck, gosec
-func logs(logger *logrus.Entry, logs []puppetmaster.Log) {
+func logs(logger *logrus.Entry, logs []puppetmaster.Log, execLogsVerbose bool) {
 	w := tabwriter.NewWriter(logger.Logger.Out, 20, 10, 1, ' ', tabwriter.Debug)
 	for _, l := range logs {
+		if !execLogsVerbose && (l.Level == "DEBUG" || l.Level == "NOTICE") {
+			continue
+		}
+
 		fmt.Fprintf(w, "%s\t%s\t%s\t\n", l.Time, l.Level, l.Message)
 	}
 	w.Flush()

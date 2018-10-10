@@ -28,6 +28,11 @@ var execCmd = &cobra.Command{
 			baseDir = args[0]
 		}
 
+		execLogsVerbose, err := cmd.Flags().GetBool("executor-logs-verbose")
+		if err != nil {
+			log.Fatalf("failed to get executor-logs-verbose flag: %v", err)
+		}
+
 		del, err := cmd.Flags().GetBool("delete")
 		if err != nil {
 			log.Fatalf("failed to get delete flag: %v", err)
@@ -51,7 +56,7 @@ var execCmd = &cobra.Command{
 		baseDir = path.Clean(baseDir)
 		log.Infof("Executing jobs from directory %s", baseDir)
 
-		if err := exec.Execute(log, client, baseDir, codeFile, varsFile, moduleFiles, del); err != nil {
+		if err := exec.Execute(log, client, baseDir, codeFile, varsFile, moduleFiles, del, execLogsVerbose); err != nil {
 			log.Fatalf("failed to execute job: %v", err)
 		}
 
@@ -63,6 +68,7 @@ func init() {
 	RootCmd.AddCommand(execCmd)
 
 	execCmd.Flags().Bool("delete", false, "Delete the job after execution")
+	execCmd.Flags().Bool("executor-logs-verbose", false, "Verbose mode prints debug and notice logs from the executor")
 	execCmd.Flags().String("vars", "vars.json", "JSON file containing variables")
 	execCmd.Flags().String("code", "code.mjs", "MJS file containing the main execution code")
 	execCmd.Flags().StringSlice("module", []string{}, "MJS files containing modules")

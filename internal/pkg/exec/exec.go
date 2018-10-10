@@ -15,7 +15,7 @@ import (
 )
 
 // Execute a job and print the finished one to loggers target
-func Execute(logger *logrus.Entry, client *puppetmaster.Client, baseDir, codeFile, varsFile string, moduleFiles []string, delete bool) error {
+func Execute(logger *logrus.Entry, client *puppetmaster.Client, baseDir, codeFile, varsFile string, moduleFiles []string, delete, execLogsVerbose bool) error {
 	code, err := file.Load(filepath.Join(baseDir, codeFile))
 	if err != nil {
 		return err
@@ -57,7 +57,7 @@ func Execute(logger *logrus.Entry, client *puppetmaster.Client, baseDir, codeFil
 		time.Sleep(time.Second)
 	}
 
-	format.Job(logger, job)
+	format.Job(logger, job, execLogsVerbose)
 
 	if delete {
 		if err := client.DeleteJob(job.UUID); err != nil {
