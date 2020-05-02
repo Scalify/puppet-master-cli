@@ -1,3 +1,7 @@
+.PHONY: build
+build:
+	@docker build -t puppet-master-cli .
+
 .PHONY: vendors
 vendors:
 	go mod download
