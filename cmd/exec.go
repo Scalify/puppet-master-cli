@@ -7,8 +7,9 @@ import (
 	"os"
 	"path"
 
-	"github.com/scalify/puppet-master-cli/internal/pkg/exec"
 	"github.com/spf13/cobra"
+
+	"github.com/scalify/puppet-master-cli/internal/pkg/exec"
 )
 
 // execCmd represents the exec command

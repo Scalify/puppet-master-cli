@@ -8,10 +8,11 @@ import (
 	"strings"
 	"time"
 
-	"github.com/scalify/puppet-master-cli/internal/pkg/file"
-	"github.com/scalify/puppet-master-cli/internal/pkg/format"
 	"github.com/scalify/puppet-master-client-go"
 	"github.com/sirupsen/logrus"
+
+	"github.com/scalify/puppet-master-cli/internal/pkg/file"
+	"github.com/scalify/puppet-master-cli/internal/pkg/format"
 )
 
 // Execute a job and print the finished one to loggers target

@@ -12,3 +12,10 @@ test:
 	go test -cover ./...
 	golangci-lint run
 	golint -set_exit_status ./...
+
+.PHONY: run-example
+run-example:
+	go run main.go exec --executor-logs-verbose \
+		--code example/code.mjs
+		--module example/modules/shared.mjs \
+		--vars example/vars.json

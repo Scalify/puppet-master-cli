@@ -6,8 +6,8 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/scalify/puppet-master-client-go"
 	"github.com/kelseyhightower/envconfig"
+	"github.com/scalify/puppet-master-client-go"
 	"github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
 )
