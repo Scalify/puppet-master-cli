@@ -2,12 +2,16 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/golang
-    working_directory: /go/src/github.com/Scalify/puppet-master-cli
+      - image: circleci/golang:1.14
 
     steps:
       - checkout
       - setup_remote_docker
+
+      - run:
+          name: install dependencies
+          command: |
+            go mod download
 
       - run:
           name: run tests
