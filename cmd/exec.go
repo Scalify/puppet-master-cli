@@ -7,7 +7,7 @@ import (
 	"os"
 	"path"
 
-	"github.com/Scalify/puppet-master-cli/internal/pkg/exec"
+	"github.com/scalify/puppet-master-cli/internal/pkg/exec"
 	"github.com/spf13/cobra"
 )
 

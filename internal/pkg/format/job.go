@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"text/tabwriter"
 
-	"github.com/Scalify/puppet-master-client-go"
+	"github.com/scalify/puppet-master-client-go"
 	"github.com/sirupsen/logrus"
 )
 

@@ -2,7 +2,7 @@
 
 package main
 
-import "github.com/Scalify/puppet-master-cli/cmd"
+import "github.com/scalify/puppet-master-cli/cmd"
 
 func main() {
 	cmd.Execute()

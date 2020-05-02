@@ -8,9 +8,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/Scalify/puppet-master-cli/internal/pkg/file"
-	"github.com/Scalify/puppet-master-cli/internal/pkg/format"
-	"github.com/Scalify/puppet-master-client-go"
+	"github.com/scalify/puppet-master-cli/internal/pkg/file"
+	"github.com/scalify/puppet-master-cli/internal/pkg/format"
+	"github.com/scalify/puppet-master-client-go"
 	"github.com/sirupsen/logrus"
 )
 
