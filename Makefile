@@ -16,6 +16,6 @@ test:
 .PHONY: run-example
 run-example:
 	go run main.go exec --executor-logs-verbose \
-		--code example/code.mjs
+		--code example/code.mjs \
 		--module example/modules/shared.mjs \
 		--vars example/vars.json
