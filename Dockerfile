@@ -10,6 +10,6 @@ RUN CGO_ENABLED=0 go build -a -ldflags '-s' -installsuffix cgo -o bin/puppet-mas
 FROM alpine:latest
 RUN apk --no-cache add ca-certificates
 WORKDIR /root/
-COPY --from=builder /go/src/github.com/Scalify/puppet-master-cli/bin/puppet-master-cli .
+COPY --from=builder /src/bin/puppet-master-cli .
 RUN chmod +x puppet-master-cli
 ENTRYPOINT ["./puppet-master-cli"]
